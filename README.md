@@ -1,4 +1,4 @@
-# Pandemic in a Bottle, UI: Ethereum, Web 3.0 Solidity App
+# Pandemic in a Bottle: Ethereum, Web 3.0 Solidity App
 
 This application is built and deployed on the Rinkeby Ethereum test network blockchain. This repo contains the solidity code which governs the smart contract functionality. The UI for this application can be found in a separate repo [here](https://github.com/NathanJReidy/pandemic-in-a-bottle-solidity-UI).
 

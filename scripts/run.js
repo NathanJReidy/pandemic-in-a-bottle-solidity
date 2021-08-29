@@ -1,23 +1,20 @@
 async function main() {
-  const [owner, randoPerson] = await ethers.getSigners();
   const waveContractFactory = await hre.ethers.getContractFactory("WavePortal"); // Go and find my smart contract and compile it, and wait for it to finish compiling
   const waveContract = await waveContractFactory.deploy(); // Hardhat will start a local Ethereum blockchain on your computer. NB: Hardhat starts and then kills the local blockchain server every time we run it
   await waveContract.deployed();
-  console.log("Contract deployed to:", waveContract.address);
-  console.log("Contract deployed by:", owner.address);
+  console.log("Contract addy:", waveContract.address);
 
-  let waveCount;
-  waveCount = await waveContract.getTotalWaves();
+  let count = await waveContract.getTotalWaves();
+  console.log(count.toNumber());
 
-  let waveTxn = await waveContract.wave();
-  await waveTxn.wait();
+  let waveTxn = await waveContract.wave("A message!");
+  await waveTxn.wait(); // wait for txn to be mined
 
-  waveCount = await waveContract.getTotalWaves();
+  waveTxn = await waveContract.wave("Another message!");
+  await waveTxn.wait(); // wait for txn to be mined
 
-  waveTxn = await waveContract.connect(randoPerson).wave();
-  await waveTxn.wait();
-
-  waveCount = await waveContract.getTotalWaves();
+  let allWaves = await waveContract.getAllWaves();
+  console.log(allWaves);
 }
 
 main()

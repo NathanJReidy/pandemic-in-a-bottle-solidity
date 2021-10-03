@@ -4,5 +4,5 @@ node_modules
 cache
 artifacts
 
-hardhat.config.js
-contractDetails.txt
+.hardhat.config.js
+.contractDetails.txt
